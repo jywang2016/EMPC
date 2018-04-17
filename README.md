@@ -1319,7 +1319,7 @@ To be continued...
 Support
 -------
 
-Open an issue on the [`EMPC` Github](https://github.com/jywang2016/EMPC) page.
+Open an issue on the [`EMPC` Github](https://github.com/jywang2016/EMPC/issues) page.
 
 License
 -------
