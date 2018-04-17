@@ -17,6 +17,7 @@ An R module aimed at **MPC** (model predictive control), **EMPC** (economics mod
 
 Framework for Building Simulation in R
 --------------------------------------
+I wanna complete the framework for building simulation and energy managmant in R. That is a huge project. Fortunately, [Hongyuan Jia](https://github.com/hongyuanjia) takes the first step.
 
 <img src="man/figures/framework.png" align="center" />
 
