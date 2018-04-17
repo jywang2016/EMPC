@@ -67,7 +67,9 @@ Installation
 Documentation
 -------------
 
-Three examples are given in the `test` file. Here is the example\#1:comfort/cost control with time-invariant constrains
+Three examples are given in the `test` file. Here is the example\#1:comfort/cost control with time-invariant constrains.
+> Data is obtained in [Mini-Project](https://github.com/oleveque/BuildingClimateControl) of [Prof.Colin Jones](https://people.epfl.ch/colin.jones/publications?lang=en&cvlang=en)'s course `Model Predictive Control`.You can compare 
+the results of `EMPC` example#1 to the project.
 
 ``` r
 #rm(list = ls())
