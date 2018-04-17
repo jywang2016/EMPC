@@ -1,0 +1,166 @@
+---
+title: "Demand Response: time-invaraint constraints with storage component (simple battery) "
+author: "Jiangyu Wang @HUST"
+date: "2018/04/09"
+output:
+  prettydoc::html_pretty:
+    theme: cayman
+    highlight: github
+---
+
+## load packages
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+rm(list = ls())
+library(EMPC)
+library(dplyr)
+library(CVXR)
+library(ECOSolveR)
+```
+
+## load data
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+load("ssM.Rdata")
+# state-space model of building
+ssmodel <- list(A = ssM$A %>% as.matrix(),
+                Bu = ssM$Bu %>% as.matrix(),
+                Bd = ssM$Bd %>% as.matrix(),
+                C = ssM$C %>% as.matrix())
+```
+
+## build MPC object and set value
+```{r echo=TRUE,warning=FALSE}
+mpc3 <- ehubmpc$new()
+mpc3$initialize() #initialize building
+
+mpc3$building$setvalue(ssmodel = ssmodel,
+                       disturbance = as.matrix(ssM$Disturbance),
+                       timestep = as.matrix(ssM$timestep),
+                       x0 = as.matrix(ssM$x0),
+                       continuous = F)
+
+mpc3$building$parameters$ssM
+```
+
+## build battery object and set value
+```{r echo=TRUE,warning=FALSE}
+mpc3$battery$setvalue(ssmodel = list(A = as.matrix(0.9800), Bu = as.matrix(0.3333)),
+                      continuous = FALSE,
+                      timestep = 1200,
+                      x0 = 0,
+                      xbmax = 20,
+                      xbmin = 0,
+                      ubmax = 20,
+                      ubmin = -20)
+mpc3$battery$parameters
+```
+
+## set control parameters
+```{r}
+N <- 72 #prediction horizon
+Tsim <- 504 #simulation/control horizon
+nu <- ncol(ssM$Bu)
+ny <- nrow(ssM$C)
+
+ECR <- 1e6
+cost <- matrix(0.2, ncol = nu, nrow = (N + Tsim))
+ymax <- matrix(26, nrow = ny, ncol = (N + Tsim))
+ymin <- matrix(22, nrow = ny, ncol = (N + Tsim))
+yref <- matrix(24, nrow = ny, ncol = (N + Tsim))
+umax <- matrix(15, nrow = ny, ncol = (N + Tsim))
+umin <- matrix(0 , nrow = ny, ncol = (N + Tsim))
+
+timestep <- ssM$timestep %>% as.numeric()
+time <- (1:nrow(cost))*timestep
+for (i in time) {
+
+  ifelse(i %% 86400 > 10*3600 & i %% 86400 <=16*3600,
+         cost[i/timestep,] <- 0.2,
+         cost[i/timestep,] <- 0.04)
+  ifelse(i %% 86400 <= 8*3600 | i %% 86400 > 18*3600,
+         ymax[,i/timestep] <- 30,
+         ymax[,i/timestep] <- 26)
+  ifelse(i %% 86400 <= 8*3600 | i %% 86400 > 18*3600,
+         ymin[,i/timestep] <- 18,
+         ymin[,i/timestep] <- 22)
+}
+
+```
+
+## set constraints-comfort control
+```{r}
+mpc3$set_parameters(N = N,
+                    Tsim = Tsim,
+                    obj = "cost", #comfort objective function
+                    cost = cost,
+                    ymin = ymin,
+                    ymax = ymax,
+                    yref = yref,
+                    ECR = ECR,
+                    umax = umax,
+                    umin = umin)
+mpc3$print_para() ##use for print prediction horizon, control horizon, and ssM is continuous or not
+mpc3$set_mpc_constraint()
+```
+
+## solve MPC
+```{r}
+solu <- mpc3$solve_mpc(control = ecos.control(maxit = 1000L,
+                                              feastol = 5e-5,
+                                              reltol = 1.5e-5))
+```
+
+## collect results and plot
+```{r message=FALSE, warning=FALSE}
+temp <- data.frame(time = 1:Tsim,
+                   room1 = t(solu$Y)[,1],
+                   room2 = t(solu$Y)[,2],
+                   room3 = t(solu$Y)[,3])
+ele  <- data.frame(time = 1:Tsim,
+                   room1 = t(solu$U)[,1],
+                   room2 = t(solu$U)[,2],
+                   room3 = t(solu$U)[,3])
+nete <- data.frame(time = 1:Tsim,
+                   nete = colSums(solu$U))
+
+battery_V <- data.frame(time = 1:Tsim,
+                        batte = t(solu$U)[,4])
+battery_E <- data.frame(time = 1:Tsim,
+                        batte = t(solu$Y)[,4])
+library(reshape2)
+library(ggplot2)
+
+hfactor <- 3600/as.numeric(ssM$timestep )
+
+temp %>% melt(id = "time") %>%
+  ggplot(aes(x = time/hfactor , y = value ,color = variable)) +
+  geom_line(size = 1) +
+  theme_bw()+
+  xlab("time/h") + ylab("temperature/degC")
+
+
+ele %>% melt(id = "time") %>%
+  ggplot(aes(x = time/hfactor , y = value ,color = variable)) +
+  geom_line(size = 1) +
+  theme_bw()+
+  xlab("time/h") + ylab("electricity/kw")
+
+nete %>%
+  ggplot(aes(x = time/hfactor, y = nete)) +
+  geom_line(size = 1 ,colour = "grey50") +
+  theme_bw()+
+  xlab("time/h") + ylab("purchase electricity/kw")
+
+battery_V %>%  
+  ggplot(aes(x = time/hfactor, y = batte)) +
+  geom_line(size = 1 ,colour = "grey50") +
+  theme_bw()+
+  xlab("time/h") + ylab("battery/kw")
+
+battery_E %>%  
+  ggplot(aes(x = time/hfactor, y = batte)) +
+  geom_line(size = 1 ,colour = "grey50") +
+  theme_bw()+
+  xlab("time/h") + ylab("battery/kw")
+
+```
+
