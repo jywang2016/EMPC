@@ -1,3 +1,8 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
 
 EMPC <img src="man/figures/EMPClogo.png" align="right" />
 =========================================================
@@ -12,12 +17,15 @@ An R module aimed at **MPC** (model predictive control), **EMPC** (economics mod
 -   [Note](#note)
 -   [Features](#features)
 -   [Installation](#installation)
--   [Documentation](#documentation)
+-   [Examples](#examples)
 -   [Support](#support)
+-   [To do list](#to-do-list)
+-   [License](#license)
 
 Framework for Building Simulation in R
 --------------------------------------
-I wanna complete the framework for building simulation and energy managmant in R. That is a huge project. Fortunately, [Hongyuan Jia](https://github.com/hongyuanjia) takes the first step.
+I wanna complete the framework for building simulation and energy managmant in R. That is a huge project. Fortunately, [Hongyuan Jia](https://github.com/hongyuanjia) takes the first step. His 
+[`eplusr`](https://github.com/hongyuanjia/eplusr) really inspires me a lot.
 
 <img src="man/figures/framework2.png" align="center" />
 
@@ -65,10 +73,10 @@ Installation
 
     devtools::install_github("jywang2016/EMPC")
 
-Documentation
+Examples
 -------------
 
-Three examples are given in the `test` file. Here is the example\#1:comfort/cost control with time-invariant constrains.
+Examples are given in the [`test`](https://github.com/jywang2016/EMPC/tree/master/test) file. Here is the example\#1:comfort/cost control with time-invariant constrains.
 > Data is obtained in [Mini-Project](https://github.com/oleveque/BuildingClimateControl) of [Prof.Colin Jones](https://people.epfl.ch/colin.jones/publications?lang=en&cvlang=en)'s course `Model Predictive Control`.You can compare 
 the results of `EMPC` example#1 to the project.
 
@@ -1323,6 +1331,12 @@ Support
 -------
 
 Open an issue on the [`EMPC` Github](https://github.com/jywang2016/EMPC/issues) page.
+
+To do list
+-------
+
++ add a Shiny graphical user interface, namely EMPCGUI
++ you can list your demand or questions on the issue
 
 License
 -------
