@@ -1,8 +1,3 @@
----
-output:
-  pdf_document: default
-  html_document: default
----
 
 EMPC <img src="man/figures/EMPClogo.png" align="right" />
 =========================================================
