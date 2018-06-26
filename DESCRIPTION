@@ -2,7 +2,7 @@ Package: EMPC
 Type: Package
 Title: Model predictive control, demand response and energyhub modeling
 Version: 0.2.0
-Author: Jiangyu Wang
+Author: Jiangyu Wang, Yize Chen
 Maintainer: Jiangyu Wang <jywang_2016@hust.edu.cn>
 Description: You can use EMPC to carry out MPC(model predictive control), EMPC(economic model predictive control) for building. It can be applied to indoor temperature control, demand response and energyhub modeling.
 License: MIT
