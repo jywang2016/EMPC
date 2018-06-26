@@ -1331,6 +1331,7 @@ To do list
 -------
 
 + add a Shiny graphical user interface, namely EMPCGUI
++ add module about DeepMpc. BTW, thanks the help of [`Yize Chen`](https://github.com/chennnnnyize).
 + you can list your demand or questions on the issue
 
 License
