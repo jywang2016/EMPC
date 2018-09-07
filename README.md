@@ -12,15 +12,11 @@ An R module aimed at **MPC** (model predictive control), **EMPC** (economics mod
 -   [Note](#note)
 -   [Features](#features)
 -   [Installation](#installation)
--   [Examples](#examples)
+-   [Documentation](#documentation)
 -   [Support](#support)
--   [To do list](#to-do-list)
--   [License](#license)
 
 Framework for Building Simulation in R
 --------------------------------------
-I wanna complete the framework for building simulation and energy managmant in R. That is a huge project. Fortunately, [Hongyuan Jia](https://github.com/hongyuanjia) takes the first step. His 
-[`eplusr`](https://github.com/hongyuanjia/eplusr) really inspires me a lot.
 
 <img src="man/figures/framework2.png" align="center" />
 
@@ -66,14 +62,14 @@ Installation
 
 `EMPC` is currently not on CRAN. You can install `EMPC` from Github with:
 
-    devtools::install_github("jywang2016/EMPC")
+``` r
+devtools::install_github("jywang2016/EMPC")
+```
 
-Examples
+Documentation
 -------------
 
-Examples are given in the [`test`](https://github.com/jywang2016/EMPC/tree/master/test) file. Here is the example\#1:comfort/cost control with time-invariant constrains.
-> Data is obtained in [Mini-Project](https://github.com/oleveque/BuildingClimateControl) of [Prof.Colin Jones](https://people.epfl.ch/colin.jones/publications?lang=en&cvlang=en)'s course `Model Predictive Control`.You can compare 
-the results of `EMPC` example#1 to the project.
+Three examples are given in the `test` file. Here is the example\#1:comfort/cost control with time-invariant constrains
 
 ``` r
 #rm(list = ls())
@@ -747,7 +743,8 @@ temp %>% melt(id = "time") %>%
   theme_bw()+
   xlab("time/h") + ylab("temperature/degC")
 ```
-<img src="man/figures/README-unnamed-chunk-2-1.png" align="center" />
+
+![](man/figures/README-unnamed-chunk-3-1.png)
 
 ``` r
 
@@ -757,7 +754,8 @@ ele %>% melt(id = "time") %>%
   theme_bw()+
   xlab("time/h") + ylab("electricity/kw")
 ```
-<img src="man/figures/README-unnamed-chunk-2-2.png" align="center" />
+
+![](man/figures/README-unnamed-chunk-3-2.png)
 
 ``` r
 
@@ -1307,7 +1305,8 @@ temp %>% melt(id = "time") %>%
   theme_bw()+
   xlab("time/h") + ylab("temperature/degC")
 ```
-<img src="man/figures/README-unnamed-chunk-2-3.png" align="center" />
+
+![](man/figures/README-unnamed-chunk-3-3.png)
 
 ``` r
 
@@ -1318,23 +1317,18 @@ ele %>% melt(id = "time") %>%
   xlab("time/h") + ylab("electricity/kw")
 ```
 
-<img src="man/figures/README-unnamed-chunk-2-4.png" align="center" />
+![](man/figures/README-unnamed-chunk-3-4.png)
 
 To be continued...
 
 Support
 -------
 
-Open an issue on the [`EMPC` Github](https://github.com/jywang2016/EMPC/issues) page.
-
-To do list
--------
-
-+ add a Shiny graphical user interface, namely EMPCGUI
-+ add module about DeepMpc. BTW, thanks the help of [`Yize Chen`](https://github.com/chennnnnyize).
-+ you can list your demand or questions on the issue
+Open an issue on the [`EMPC` Github](https://github.com/jywang2016/EMPC) page.
 
 License
 -------
 
-MIT © Jiangyu Wang
+The project is released under the terms of the GPL-3.0.
+
+Copyright © 2018 Jiangyu Wang

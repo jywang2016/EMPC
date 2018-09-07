@@ -43,14 +43,9 @@
 #' net electricity power(E), battery capacity(Xb)
 #' @examples
 #' search `EMPC` on github, find more examples
-#' @importFrom R6 R6Class
-#' @importFrom CVXR Variable
-#' @importFrom CVXR Minimize
-#' @importFrom CVXR Problem
-#' @importFrom CVXR get_problem_data
-#' @importFrom CVXR sum_squares
-#' @importFrom ECOSolveR ECOS_csolve
-#' @importFrom ECOSolveR ecos.control
+#' @import R6
+#' @import CVXR
+#' @import ECOSolveR
 #' @export
 ehubmpc <- R6::R6Class(classname = "ehubmpc",
                      inherit = mpc, #inherit class:mpc

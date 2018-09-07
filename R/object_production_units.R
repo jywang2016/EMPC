@@ -11,7 +11,7 @@
 #' An object of R6Class
 #' @examples
 #' search `EMPC` on github, find more examples
-#' @importFrom R6 R6Class
+#' @import R6
 #' @export
 
 production <- R6::R6Class(classname = "production",

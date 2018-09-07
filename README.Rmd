@@ -7,7 +7,7 @@ output:
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  fig.path = "README-"
+  fig.path = "man/figures/README-"
 )
 ```
 # EMPC <img src="man/figures/EMPClogo.png" align="right" />
@@ -28,7 +28,7 @@ An R module aimed at **MPC** (model predictive control), **EMPC** (economics mod
 
 ## Framework for Building Simulation in R
 
-<img src="man/figures/framework.png" align="center" />
+<img src="man/figures/framework2.png" align="center" />
 
 
 ## How MPC in R
@@ -68,7 +68,7 @@ EMPC: If there is a storage or generation component(i.e. simple battery), the op
 
 `EMPC` is currently not on CRAN. You can install `EMPC` from Github with:
 
-```
+```{r eval=FALSE}
 devtools::install_github("jywang2016/EMPC")
 ```
 
@@ -233,4 +233,6 @@ page.
 
 ## License
 
-MIT © Jiangyu Wang
+The project is released under the terms of the GPL-3.0.
+
+Copyright © 2018 Jiangyu Wang

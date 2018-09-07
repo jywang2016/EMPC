@@ -15,8 +15,8 @@
 #' An object of R6Class
 #' @examples
 #' search `EMPC` on github, find more examples
-#' @importFrom R6 R6Class
-#' @importFrom expm expm
+#' @import R6
+#' @import expm
 #' @export
 storage <- R6::R6Class(classname = "storage",
                        public = list(
