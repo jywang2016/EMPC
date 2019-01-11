@@ -1,25 +1,22 @@
 ---
-title: "Energyhub: time-invaraint constraints with storageand production component  "
-author: "Jiangyu Wang @HUST"
-date: "2018/04/09"
-output:
-  prettydoc::html_pretty:
-    theme: cayman
-    highlight: github
+title: "Demand Response with a storage component(simple battery)"
 ---
+
+```{r knitr_init, echo=FALSE, cache=FALSE}
+knitr::opts_knit$set(cache = TRUE)
+```
 
 ## load packages
 ```{r echo=TRUE, message=FALSE, warning=FALSE}
 rm(list = ls())
 library(EMPC)
 library(dplyr)
-library(CVXR)
 library(ECOSolveR)
 ```
 
 ## load data
 ```{r echo=TRUE, message=FALSE, warning=FALSE}
-load("ssM.Rdata")
+load(system.file('extdata/ssM.Rdata',package = 'EMPC'))
 # state-space model of building
 ssmodel <- list(A = ssM$A %>% as.matrix(),
                 Bu = ssM$Bu %>% as.matrix(),
@@ -41,7 +38,7 @@ mpc3$building$setvalue(ssmodel = ssmodel,
 mpc3$building$parameters$ssM
 ```
 
-## build battery component and set value
+## build battery object and set value
 ```{r echo=TRUE,warning=FALSE}
 mpc3$battery$setvalue(ssmodel = list(A = as.matrix(0.9800), Bu = as.matrix(0.3333)),
                       continuous = FALSE,
@@ -52,14 +49,6 @@ mpc3$battery$setvalue(ssmodel = list(A = as.matrix(0.9800), Bu = as.matrix(0.333
                       ubmax = 20,
                       ubmin = -20)
 mpc3$battery$parameters
-```
-
-## build production component and set value
-```{r}
-pvraw <-read.csv("pv.csv")
-pv <- as.matrix(t(pvraw))
-mpc3$onsite$setvalue(generation = pv,
-                     timestep = 1200)
 ```
 
 ## set control parameters
@@ -73,6 +62,7 @@ ECR <- 1e6
 cost <- matrix(0.2, ncol = nu, nrow = (N + Tsim))
 ymax <- matrix(26, nrow = ny, ncol = (N + Tsim))
 ymin <- matrix(22, nrow = ny, ncol = (N + Tsim))
+yref <- matrix(24, nrow = ny, ncol = (N + Tsim))
 umax <- matrix(15, nrow = ny, ncol = (N + Tsim))
 umin <- matrix(0 , nrow = ny, ncol = (N + Tsim))
 
@@ -101,18 +91,17 @@ mpc3$set_parameters(N = N,
                     cost = cost,
                     ymin = ymin,
                     ymax = ymax,
-                    yref = NA,
+                    yref = yref,
                     ECR = ECR,
                     umax = umax,
                     umin = umin)
 mpc3$print_para() ##use for print prediction horizon, control horizon, and ssM is continuous or not
-mpc3$set_mpc_constraint(unit.index = c(1,1))
+mpc3$set_mpc_constraint()
 ```
 
 ## solve MPC
 ```{r}
-solu <- mpc3$solve_mpc(unit.index = c(1,1),
-                       control = ecos.control(maxit = 1000L,
+solu <- mpc3$solve_mpc(control = ecos.control(maxit = 1000L,
                                               feastol = 5e-5,
                                               reltol = 1.5e-5))
 ```
@@ -131,11 +120,9 @@ nete <- data.frame(time = 1:Tsim,
                    nete = colSums(solu$U))
 
 battery_V <- data.frame(time = 1:Tsim,
-                        Uin = t(solu$Ub)[,1],
-                        Upv = -t(solu$Ub)[,2])
+                        batte = t(solu$U)[,4])
 battery_E <- data.frame(time = 1:Tsim,
-                        Xbattery = t(solu$Xb)[,1],
-                        Xpv = -t(solu$Xb)[,2])
+                        batte = t(solu$Y)[,4])
 library(reshape2)
 library(ggplot2)
 
@@ -156,22 +143,21 @@ ele %>% melt(id = "time") %>%
 
 nete %>%
   ggplot(aes(x = time/hfactor, y = nete)) +
-  geom_line(size = 1) +
+  geom_line(size = 1 ,colour = "grey50") +
   theme_bw()+
   xlab("time/h") + ylab("purchase electricity/kw")
 
-battery_V %>%  melt(id ="time") %>%
-  ggplot(aes(x = time/hfactor, y = value, color = variable)) +
-  geom_line(size = 1) +
+battery_V %>%  
+  ggplot(aes(x = time/hfactor, y = batte)) +
+  geom_line(size = 1 ,colour = "grey50") +
   theme_bw()+
   xlab("time/h") + ylab("battery/kw")
 
-battery_E %>% melt(id = "time") %>%
-  ggplot(aes(x = time/hfactor, y = value, color = variable)) +
-  geom_line(size = 1) +
+battery_E %>%  
+  ggplot(aes(x = time/hfactor, y = batte)) +
+  geom_line(size = 1 ,colour = "grey50") +
   theme_bw()+
   xlab("time/h") + ylab("battery/kw")
-
 
 ```
 

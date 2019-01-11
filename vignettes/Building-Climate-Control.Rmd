@@ -1,26 +1,22 @@
 ---
-title: "Building climate control: comfort/cost control with time-invariant constrains "
-author: "Jiangyu Wang @HUST"
-date: "2018/04/09"
-output:
-  prettydoc::html_pretty:
-    theme: cayman
-    highlight: github
-
+title: "Building Climate Control with time-variant Constraints"
 ---
+
+```{r knitr_init, echo=FALSE, cache=FALSE}
+knitr::opts_knit$set(cache = TRUE)
+```
 
 ## load packages
 ```{r echo=TRUE, message=FALSE, warning=FALSE}
 rm(list = ls())
 library(EMPC)
-library(dplyr)
-library(CVXR)
 library(ECOSolveR)
+library(dplyr)
 ```
 
 ## load data
 ```{r echo=TRUE, message=FALSE, warning=FALSE}
-load("ssM.Rdata")
+load(system.file('extdata/ssM.Rdata',package = 'EMPC'))
 # state-space model of building
 ssmodel <- list(A = ssM$A %>% as.matrix(),
                 Bu = ssM$Bu %>% as.matrix(),
@@ -45,7 +41,7 @@ mpc2$building$parameters$ssM
 ## set control parameters
 ```{r}
 N <- 72 #prediction horizon
-Tsim <- 504 #simulation/control horizon
+Tsim <- 504 #simulation horizon
 nu <- ncol(ssM$Bu)
 ny <- nrow(ssM$C)
 

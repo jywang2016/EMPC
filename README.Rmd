@@ -16,7 +16,7 @@ An R module aimed at **MPC** (model predictive control), **EMPC** (economics mod
 -   [Note](#note)
 -   [Features](#features)
 -   [Installation](#installation)
--   [Documentation](#documentation)
+-   [Examples](#examples)
 -   [Support](#support)
 
 ## Framework for Building Simulation in R
@@ -72,9 +72,14 @@ knitr::include_graphics(path =  "man/figures/equation3.png")
 devtools::install_github("jywang2016/EMPC")
 ```
 
-## Documentation
+## Examples
 
-Three examples are given in the `test` file.
+[Three examples](https://jywang2016.github.io/EMPC/articles/) have been proposed:
+
+  - Building Climate Control
+  - Demand Response With a Simple Battery
+  - EnergyHub modeling with a Battery and a generation module.
+  
 Here is the example#1:comfort/cost control with time-variant constrains.
 
 ```{r message=FALSE, warning=FALSE,eval=FALSE}

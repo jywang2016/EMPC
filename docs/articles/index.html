@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>mpc controller — mpc • EMPC</title>
+<title>Articles • EMPC</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,10 +30,7 @@
 
 
 
-<meta property="og:title" content="mpc controller — mpc" />
-
-<meta property="og:description" content="solve mpc for building climate control or &quot;cost-optimal&quot; control" />
-<meta name="twitter:card" content="summary" />
+<meta property="og:title" content="Articles" />
 
 
 
@@ -50,7 +47,7 @@
   </head>
 
   <body>
-    <div class="container template-reference-topic">
+    <div class="container template-article-index">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -117,98 +114,19 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>mpc controller</h1>
-    <small class="dont-index">Source: <a href='https://github.com/jywang2016/EMPC/blob/master/R/object_mpc.R'><code>R/object_mpc.R</code></a></small>
-    <div class="hidden name"><code>mpc.Rd</code></div>
+      <h1>Articles</h1>
     </div>
 
-    <div class="ref-description">
-    
-    <p>solve mpc for building climate control or "cost-optimal" control</p>
-    
+    <div class="section ">
+      <h3>All vignettes</h3>
+      <p class="section-desc"></p>
+
+      <ul>
+        <li><a href="Building-Climate-Control.html">Building Climate Control with time-variant Constraints</a></li>
+        <li><a href="Demand-Response-Simple-Battery.html">Demand Response with a storage component(simple battery)</a></li>
+        <li><a href="Energy-Hub-Storage-Generation.html">Energyhub with storageand production component</a></li>
+      </ul>
     </div>
-
-    <pre class="usage"><span class='no'>mpc</span></pre>
-    
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>N</th>
-      <td><p>prediction horizon</p></td>
-    </tr>
-    <tr>
-      <th>Tsim</th>
-      <td><p>simulation horizon; Tsim &gt;= N</p></td>
-    </tr>
-    <tr>
-      <th>obj</th>
-      <td><p>control purpose; obj should be one of "cost" or "comfort". "cost" means "cost-optimal"
-econimic mpc while "comfort" means temperature/humidity control. Different value respresents
-different objective in linear programming</p></td>
-    </tr>
-    <tr>
-      <th>cost</th>
-      <td><p>electricity price; it should be a matrix of electricity price whether the price is changed
-or not</p></td>
-    </tr>
-    <tr>
-      <th>ymin/ymax</th>
-      <td><p>lower/upper limit of temperature/humidity; a matrix</p></td>
-    </tr>
-    <tr>
-      <th>yref</th>
-      <td><p>reference y, i.e. temperature setpoint; a matrix</p></td>
-    </tr>
-    <tr>
-      <th>ECR</th>
-      <td><p>penalty factor for slack variable s; default 1e6</p></td>
-    </tr>
-    <tr>
-      <th>umax/umin</th>
-      <td><p>lower/upper limits of heating/cooling power</p></td>
-    </tr>
-    <tr>
-      <th>control</th>
-      <td><p>ecos.control; control parameters for ECOS solver. More details can be seen in ECOSolver
-package</p></td>
-    </tr>
-    </table>
-    
-    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
-
-    <p>An object of class <code>R6ClassGenerator</code> of length 24.</p>
-    
-    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
-
-    <p>If your focus is energyhub which contains building unit, production or storage unit
-, ehubmpc object maybe a better choice. mpc only supports building unit without other units involved.
-Besides, time-variant constraints, such as temperature setpoints and range, electricity cost,
-equipment power (heating/cooling power) are supported.</p>
-    
-
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>#model <- mpc$new()
-#model$initialize()
-#model$set_parameters(N,Tsim,obj,cost,ymin,ymax,yref,ECR,umax,umin)
-#model$print_para()
-#model$set_mpc_constraint()
-#model$solve_mpc(control = ecos.control())
-
-</div></pre>
-  </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#format">Format</a></li>
-
-      <li><a href="#note">Note</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
   </div>
 </div>
 

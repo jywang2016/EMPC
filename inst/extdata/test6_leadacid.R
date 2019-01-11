@@ -1,5 +1,5 @@
 rm(list = ls())
-# invariant everything + battery
+
 library(EMPC)
 library(dplyr)
 library(CVXR)

@@ -5,12 +5,12 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Model predictive control, demand response and energyhub modeling • EMPC</title>
+<title>Building Climate Control with time-variant Constraints • EMPC</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
-<script src="pkgdown.js"></script><meta property="og:title" content="Model predictive control, demand response and energyhub modeling">
-<meta property="og:description" content="You can use EMPC to carry out MPC(model predictive control), EMPC(economic model predictive control) for building. It can be applied to indoor temperature control, demand response and energyhub modeling.">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
+<script src="../pkgdown.js"></script><meta property="og:title" content="Building Climate Control with time-variant Constraints">
+<meta property="og:description" content="">
 <meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -29,7 +29,7 @@
         <span class="icon-bar"></span>
       </button>
       <span class="navbar-brand">
-        <a class="navbar-link" href="index.html">EMPC</a>
+        <a class="navbar-link" href="../index.html">EMPC</a>
         <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.1</span>
       </span>
     </div>
@@ -37,13 +37,13 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
-  <a href="index.html">
+  <a href="../index.html">
     <span class="fa fa-home fa-lg"></span>
      
   </a>
 </li>
 <li>
-  <a href="reference/index.html">Reference</a>
+  <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -53,13 +53,13 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="articles/Building-Climate-Control.html">Building Climate Control with time-variant Constraints</a>
+      <a href="../articles/Building-Climate-Control.html">Building Climate Control with time-variant Constraints</a>
     </li>
     <li>
-      <a href="articles/Demand-Response-Simple-Battery.html">Demand Response with a storage component(simple battery)</a>
+      <a href="../articles/Demand-Response-Simple-Battery.html">Demand Response with a storage component(simple battery)</a>
     </li>
     <li>
-      <a href="articles/Energy-Hub-Storage-Generation.html">Energyhub with storageand production component</a>
+      <a href="../articles/Energy-Hub-Storage-Generation.html">Energyhub with storageand production component</a>
     </li>
   </ul>
 </li>
@@ -82,97 +82,39 @@
       
       </header><div class="row">
   <div class="col-md-9 contents">
-    
+    <div class="page-header toc-ignore">
+      <h1>Building Climate Control with time-variant Constraints</h1>
+            
+      
+      <small class="dont-index">Source: <a href="https://github.com/jywang2016/EMPC/blob/master/vignettes/Building-Climate-Control.Rmd"><code>vignettes/Building-Climate-Control.Rmd</code></a></small>
+      <div class="hidden name"><code>Building-Climate-Control.Rmd</code></div>
+
+    </div>
 
     
     
-<div id="empc" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#empc" class="anchor"></a>EMPC <img src="reference/figures/EMPClogo.png" align="right">
-</h1></div>
-<p>An R module aimed at <strong>MPC</strong> (model predictive control), <strong>EMPC</strong> (economics model predictive control), EMPC-based Demand Response and Energyhub modeling for buildings.</p>
-<hr>
-<ul>
-<li><a href="#framework-for-building-simulation-in-r">Framework for Building Simulation in R</a></li>
-<li><a href="#how-mpc-in-r">How MPC in R</a></li>
-<li><a href="#algorithm">Algorithm</a></li>
-<li><a href="#note">Note</a></li>
-<li><a href="#features">Features</a></li>
-<li><a href="#installation">Installation</a></li>
-<li><a href="#examples">Examples</a></li>
-<li><a href="#support">Support</a></li>
-</ul>
-<div id="framework-for-building-simulation-in-r" class="section level2">
+<div id="load-packages" class="section level2">
 <h2 class="hasAnchor">
-<a href="#framework-for-building-simulation-in-r" class="anchor"></a>Framework for Building Simulation in R</h2>
-<p><img src="reference/figures/framework2.png"><!-- --></p>
-</div>
-<div id="how-mpc-in-r" class="section level2">
-<h2 class="hasAnchor">
-<a href="#how-mpc-in-r" class="anchor"></a>How MPC in R</h2>
-<p>In my opinion, building MPC is a specific convex optimization problem which can be solved with the linear programming algorithm. <a href="https://github.com/anqif/CVXR"><strong>CVXR</strong></a> allows R users to formulate convex optimization problems in a natural mathematival syntax rather than the restrictive standard form. Therefore, <strong>EMPC</strong> is developed based on <strong>CVXR</strong>. Besides, <a href="https://github.com/embotech/ecos"><strong>ECOS</strong></a> slover, a lightweight conic solver for SOCP(second-order cone programming), is chosen as default solver. Gratitude is extended to <a href="https://github.com/anqif">Anqi Fu</a> and <a href="https://github.com/bnaras">Balasubramanian Narasimhan</a> for their amazing packages <strong>CVXR</strong> and <a href="https://github.com/bnaras/ECOSolveR"><strong>ECOSolver</strong></a>(an R interface for <code>ECOS</code>), repectively.</p>
-</div>
-<div id="algorithm" class="section level2">
-<h2 class="hasAnchor">
-<a href="#algorithm" class="anchor"></a>Algorithm</h2>
-<p>MPC: For every iteration in <strong>comfort</strong> control (i.e. indoor temperature control), the optimization problem is concluded as:</p>
-<p><img src="reference/figures/equation1.png"><!-- --></p>
-<p>EMPC:For every iteration in <strong>cost</strong> control (i.e. minimize the electricity cost), the optimization problem is concluded as:</p>
-<p><img src="reference/figures/equation2.png"><!-- --></p>
-<p>EMPC: If there is a storage or generation component(i.e. simple battery), the optimization problem is concluded as:</p>
-<p><img src="reference/figures/equation3.png"><!-- --></p>
-</div>
-<div id="note" class="section level2">
-<h2 class="hasAnchor">
-<a href="#note" class="anchor"></a>Note</h2>
-<p><code>EMPC</code> is only available for simulating <strong>discrete-time linear time-invariant</strong> systems at present.</p>
-<blockquote>
-<p>In order to obtain discrete state-space model and transform it bettween different timesteps, <code>c2d</code> and <code>d2c</code> functions are provided.</p>
-</blockquote>
-</div>
-<div id="features" class="section level2">
-<h2 class="hasAnchor">
-<a href="#features" class="anchor"></a>Features</h2>
-<ul>
-<li>Time-variant constraints, such as temperature range, power/energy inputs are supported.</li>
-<li>Two control mode, namely <strong>comfort</strong> control and <strong>cost</strong> control are provided.</li>
-<li>Simple battery and lead-acid battery object models are available.</li>
-<li>Directly add storage component and generation component to your building component.</li>
-</ul>
-<blockquote>
-<p>In order to make the package easy-to-use for researchers in building/energy fields, objective function is warpped. Therefore, the users cannot change the optimized object.</p>
-</blockquote>
-</div>
-<div id="installation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#installation" class="anchor"></a>Installation</h2>
-<p><code>EMPC</code> is currently not on CRAN. You can install <code>EMPC</code> from Github with:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">devtools<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/devtools/topics/reexports">install_github</a></span>(<span class="st">"jywang2016/EMPC"</span>)</code></pre></div>
-</div>
-<div id="examples" class="section level2">
-<h2 class="hasAnchor">
-<a href="#examples" class="anchor"></a>Examples</h2>
-<p><a href="https://jywang2016.github.io/EMPC/articles/">Three examples</a> have been proposed:</p>
-<ul>
-<li>Building Climate Control</li>
-<li>Demand Response With a Simple Battery</li>
-<li>EnergyHub modeling with a Battery and a generation module.</li>
-</ul>
-<p>Here is the example#1:comfort/cost control with time-variant constrains.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#rm(list = ls())</span>
+<a href="#load-packages" class="anchor"></a>load packages</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/rm">rm</a></span>(<span class="dt">list =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/ls">ls</a></span>())
 <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(EMPC)
-<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(dplyr)
-
-## ----echo=TRUE, message=FALSE, warning=FALSE-----------------------------
-<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/load">load</a></span>(<span class="st">"./inst/extdata/ssM.Rdata"</span>)
+<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(ECOSolveR)
+<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(dplyr)</code></pre></div>
+</div>
+<div id="load-data" class="section level2">
+<h2 class="hasAnchor">
+<a href="#load-data" class="anchor"></a>load data</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/load">load</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/system.file">system.file</a></span>(<span class="st">'extdata/ssM.Rdata'</span>,<span class="dt">package =</span> <span class="st">'EMPC'</span>))
 <span class="co"># state-space model of building</span>
 ssmodel &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="dt">A =</span> ssM<span class="op">$</span>A <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/matrix">as.matrix</a></span>(),
                 <span class="dt">Bu =</span> ssM<span class="op">$</span>Bu <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/matrix">as.matrix</a></span>(),
                 <span class="dt">Bd =</span> ssM<span class="op">$</span>Bd <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/matrix">as.matrix</a></span>(),
-                <span class="dt">C =</span> ssM<span class="op">$</span>C <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/matrix">as.matrix</a></span>())
-
-## ------------------------------------------------------------------------
-mpc2 &lt;-<span class="st"> </span>mpc<span class="op">$</span><span class="kw">new</span>()
+                <span class="dt">C =</span> ssM<span class="op">$</span>C <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/matrix">as.matrix</a></span>())</code></pre></div>
+</div>
+<div id="build-mpc-object-and-set-value" class="section level2">
+<h2 class="hasAnchor">
+<a href="#build-mpc-object-and-set-value" class="anchor"></a>build MPC object and set value</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mpc2 &lt;-<span class="st"> </span>mpc<span class="op">$</span><span class="kw">new</span>()
 mpc2<span class="op">$</span><span class="kw">initialize</span>() <span class="co">#initialize building</span>
 
 mpc2<span class="op">$</span>building<span class="op">$</span><span class="kw">setvalue</span>(<span class="dt">ssmodel =</span> ssmodel,
@@ -181,11 +123,83 @@ mpc2<span class="op">$</span>building<span class="op">$</span><span class="kw">s
                        <span class="dt">x0 =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/matrix">as.matrix</a></span>(ssM<span class="op">$</span>x0),
                        <span class="dt">continuous =</span> F)
 
-mpc2<span class="op">$</span>building<span class="op">$</span>parameters<span class="op">$</span>ssM
-
-## ------------------------------------------------------------------------
-N &lt;-<span class="st"> </span><span class="dv">72</span> <span class="co">#prediction horizon</span>
-Tsim &lt;-<span class="st"> </span><span class="dv">504</span> <span class="co">#simulation/control horizon</span>
+mpc2<span class="op">$</span>building<span class="op">$</span>parameters<span class="op">$</span>ssM</code></pre></div>
+<pre><code>## $A
+##                X__1          X__2          X__3          X__4
+##  [1,]  9.902461e-01 -0.0341477627 -0.0349554502  3.951889e-04
+##  [2,] -2.951419e-02  0.7156788201 -0.2578433263  2.262486e-03
+##  [3,] -3.219325e-02 -0.2622971746  0.7248789148  2.536054e-03
+##  [4,]  3.809805e-04  0.0023301619  0.0025444660  9.758690e-01
+##  [5,]  1.891457e-02 -0.0628656346  0.0231790640 -2.064149e-03
+##  [6,]  9.415195e-05 -0.0002494190  0.0014345088  9.500797e-02
+##  [7,]  7.096762e-03  0.0821178876  0.1171879265 -1.709680e-03
+##  [8,] -1.414940e-03 -0.0461965950 -0.0423133686  1.529389e-04
+##  [9,] -3.454219e-06  0.0002129306  0.0004138108  1.674112e-02
+## [10,]  1.767425e-04  0.0022254152  0.0047213932 -6.036526e-05
+##                X__5          X__6          X__7          X__8
+##  [1,]  0.0178892463  9.363503e-05  0.0098910014  1.149628e-03
+##  [2,] -0.0720023206 -3.363144e-04  0.0879888115 -4.100293e-02
+##  [3,]  0.0202924338  1.355532e-03  0.1297861842 -2.815370e-02
+##  [4,] -0.0020293604  9.501031e-02 -0.0018832749 -9.557869e-05
+##  [5,]  0.5609291153 -7.967408e-04 -0.0951714775 -1.661523e-01
+##  [6,] -0.0010872895  5.137078e-01  0.0001843103 -1.339665e-03
+##  [7,] -0.0810401914  2.757872e-04  0.7507363194 -1.283953e-02
+##  [8,] -0.1299511883 -1.047945e-03 -0.0209168479  7.321983e-01
+##  [9,]  0.0007673638 -1.398990e-01 -0.0001389381  4.422561e-04
+## [10,] -0.0105346779 -2.796444e-04 -0.0244580939 -1.606814e-03
+##                X__9         X__10
+##  [1,]  8.012291e-06  0.0015968603
+##  [2,]  2.177648e-04  0.0115291172
+##  [3,]  4.502494e-04  0.0221839186
+##  [4,]  1.674068e-02 -0.0003745957
+##  [5,]  5.713050e-04 -0.0453749877
+##  [6,] -1.399026e-01 -0.0004026761
+##  [7,] -1.033560e-04 -0.1199172425
+##  [8,]  4.584948e-04 -0.1097349396
+##  [9,]  7.510437e-01 -0.0007157662
+## [10,] -6.136057e-04  0.6690089354
+## 
+## $Bu
+##              X__1          X__2       X__3
+##  [1,]  -1.2863481  -5.127213962 -1.2769706
+##  [2,]   1.0377469 -23.639870670  1.0662717
+##  [3,]  -1.8578441 -16.397734415 -1.9548543
+##  [4,]   4.0921562   0.120281388 -3.9828719
+##  [5,]   8.4911688  -3.849466905  8.3930268
+##  [6,] -10.2013055  -0.008062870 10.2844215
+##  [7,]   2.4016345   2.328494503  2.3726917
+##  [8,]   1.9482616  -0.905524880  1.9478316
+##  [9,]  -0.9551241   0.005801042  0.9583937
+## [10,]   0.5214965   0.142189138  0.5228422
+## 
+## $Bd
+##               X__1          X__2         X__3
+##  [1,] -1.651993854 -0.3621928554 -6.095515453
+##  [2,] -0.079582125  0.0327764689 -2.162736402
+##  [3,] -1.054423437 -0.0709261439 -6.016315856
+##  [4,]  0.019234965 -0.0156658215  0.106212445
+##  [5,]  2.055863825  0.1061558756 11.748984753
+##  [6,]  0.010249986  0.0008007878  0.058716662
+##  [7,] -0.784684711 -0.3192514486  0.129024228
+##  [8,] -0.902737950 -0.2629909018 -0.183950087
+##  [9,] -0.004115286 -0.0130810568 -0.007598811
+## [10,]  1.918207414  0.1395914579 -0.836037599
+## 
+## $C
+##              X__1         X__2         X__3          X__4         X__5
+## [1,] -0.003290563  0.001139590 -0.003637673  0.0041945242  0.014123995
+## [2,] -0.006394231 -0.028360807 -0.022583134  0.0001867462 -0.003668759
+## [3,] -0.003282924  0.001167913 -0.003732634 -0.0040117867  0.014016779
+##               X__6        X__7         X__8          X__9       X__10
+## [1,] -1.224743e-02 0.002897262  0.003087653 -2.151410e-03 0.001451047
+## [2,] -1.947594e-06 0.005809756 -0.002515786  1.717696e-05 0.001060827
+## [3,]  1.240724e-02 0.002857488  0.003094054  2.152449e-03 0.001451978</code></pre>
+</div>
+<div id="set-control-parameters" class="section level2">
+<h2 class="hasAnchor">
+<a href="#set-control-parameters" class="anchor"></a>set control parameters</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">N &lt;-<span class="st"> </span><span class="dv">72</span> <span class="co">#prediction horizon</span>
+Tsim &lt;-<span class="st"> </span><span class="dv">504</span> <span class="co">#simulation horizon</span>
 nu &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/nrow">ncol</a></span>(ssM<span class="op">$</span>Bu)
 ny &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/nrow">nrow</a></span>(ssM<span class="op">$</span>C)
 
@@ -210,11 +224,12 @@ time &lt;-<span class="st"> </span>(<span class="dv">1</span><span class="op">:<
   <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/ifelse">ifelse</a></span>(i <span class="op">%%</span><span class="st"> </span><span class="dv">86400</span> <span class="op">&lt;=</span><span class="st"> </span><span class="dv">8</span><span class="op">*</span><span class="dv">3600</span> <span class="op">|</span><span class="st"> </span>i <span class="op">%%</span><span class="st"> </span><span class="dv">86400</span> <span class="op">&gt;</span><span class="st"> </span><span class="dv">18</span><span class="op">*</span><span class="dv">3600</span>,
          ymin[,i<span class="op">/</span>timestep] &lt;-<span class="st"> </span><span class="dv">18</span>,
          ymin[,i<span class="op">/</span>timestep] &lt;-<span class="st"> </span><span class="dv">22</span>)
-}
-
-
-## ------------------------------------------------------------------------
-mpc2<span class="op">$</span><span class="kw">set_parameters</span>(<span class="dt">N =</span> N,
+}</code></pre></div>
+</div>
+<div id="set-constraints-comfort-control" class="section level2">
+<h2 class="hasAnchor">
+<a href="#set-constraints-comfort-control" class="anchor"></a>set constraints-comfort control</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mpc2<span class="op">$</span><span class="kw">set_parameters</span>(<span class="dt">N =</span> N,
                     <span class="dt">Tsim =</span> Tsim,
                     <span class="dt">obj =</span> <span class="st">"comfort"</span>, <span class="co">#comfort objective function</span>
                     <span class="dt">cost =</span> cost,
@@ -224,14 +239,21 @@ mpc2<span class="op">$</span><span class="kw">set_parameters</span>(<span class=
                     <span class="dt">ECR =</span> ECR,
                     <span class="dt">umax =</span> umax,
                     <span class="dt">umin =</span> umin)
-mpc2<span class="op">$</span><span class="kw">print_para</span>() ##use for print prediction horizon, control horizon, and ssM is continuous or not
-mpc2<span class="op">$</span><span class="kw">set_mpc_constraint</span>()
-
-## ------------------------------------------------------------------------
-solu &lt;-<span class="st"> </span>mpc2<span class="op">$</span><span class="kw">solve_mpc</span>()
-
-## ------------------------------------------------------------------------
-temp &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/data.frame">data.frame</a></span>(<span class="dt">time =</span> <span class="dv">1</span><span class="op">:</span>Tsim,
+mpc2<span class="op">$</span><span class="kw">print_para</span>() ##use for print prediction horizon, control horizon, and ssM is continuous or not</code></pre></div>
+<pre><code>## [1] "prediction horizon: 72 * 1200 s"
+## [1] "simulation horizon: 504 * 1200 s"
+## [1] "state-space continuous: discrete"</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mpc2<span class="op">$</span><span class="kw">set_mpc_constraint</span>()</code></pre></div>
+</div>
+<div id="solve-mpc" class="section level2">
+<h2 class="hasAnchor">
+<a href="#solve-mpc" class="anchor"></a>solve MPC</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">solu &lt;-<span class="st"> </span>mpc2<span class="op">$</span><span class="kw">solve_mpc</span>()</code></pre></div>
+</div>
+<div id="collect-results-and-plot" class="section level2">
+<h2 class="hasAnchor">
+<a href="#collect-results-and-plot" class="anchor"></a>collect results and plot</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">temp &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/data.frame">data.frame</a></span>(<span class="dt">time =</span> <span class="dv">1</span><span class="op">:</span>Tsim,
                    <span class="dt">room1 =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/t">t</a></span>(solu<span class="op">$</span>Y)[,<span class="dv">1</span>],
                    <span class="dt">room2 =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/t">t</a></span>(solu<span class="op">$</span>Y)[,<span class="dv">2</span>],
                    <span class="dt">room3 =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/t">t</a></span>(solu<span class="op">$</span>Y)[,<span class="dv">3</span>])
@@ -249,17 +271,19 @@ temp <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mel
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> time<span class="op">/</span>hfactor , <span class="dt">y =</span> value ,<span class="dt">color =</span> variable)) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">size =</span> <span class="dv">1</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw">theme_bw</span>()<span class="op">+</span>
-<span class="st">  </span><span class="kw">xlab</span>(<span class="st">"time/h"</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ylab</span>(<span class="st">"temperature/degC"</span>)
-
-ele <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">melt</span>(<span class="dt">id =</span> <span class="st">"time"</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">"time/h"</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ylab</span>(<span class="st">"temperature/degC"</span>)</code></pre></div>
+<p><img src="Building-Climate-Control_files/figure-html/unnamed-chunk-7-1.png" width="700"></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ele <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">melt</span>(<span class="dt">id =</span> <span class="st">"time"</span>) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> time<span class="op">/</span>hfactor , <span class="dt">y =</span> value ,<span class="dt">color =</span> variable)) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">size =</span> <span class="dv">1</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw">theme_bw</span>()<span class="op">+</span>
 <span class="st">  </span><span class="kw">xlab</span>(<span class="st">"time/h"</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ylab</span>(<span class="st">"electricity/kw"</span>)</code></pre></div>
-<p><img src="reference/figures/fig1.png" width="80%" style="display: block; margin: auto;"></p>
-<p><img src="reference/figures/fig2.png" width="80%" style="display: block; margin: auto;"></p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## ------------------------------------------------------------------------
-mpc2<span class="op">$</span><span class="kw">set_parameters</span>(<span class="dt">N =</span> N,
+<p><img src="Building-Climate-Control_files/figure-html/unnamed-chunk-7-2.png" width="700"></p>
+</div>
+<div id="set-constraints-cost-control" class="section level2">
+<h2 class="hasAnchor">
+<a href="#set-constraints-cost-control" class="anchor"></a>set constraints-cost control</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mpc2<span class="op">$</span><span class="kw">set_parameters</span>(<span class="dt">N =</span> N,
                     <span class="dt">Tsim =</span> Tsim,
                     <span class="dt">obj =</span> <span class="st">"cost"</span>,
                     <span class="dt">cost =</span> cost,
@@ -269,14 +293,21 @@ mpc2<span class="op">$</span><span class="kw">set_parameters</span>(<span class=
                     <span class="dt">ECR =</span> ECR,
                     <span class="dt">umax =</span> umax,
                     <span class="dt">umin =</span> umin)
-mpc2<span class="op">$</span><span class="kw">print_para</span>()
-mpc2<span class="op">$</span><span class="kw">set_mpc_constraint</span>()
-
-## ------------------------------------------------------------------------
-solu &lt;-<span class="st"> </span>mpc2<span class="op">$</span><span class="kw">solve_mpc</span>(<span class="dt">control =</span> <span class="kw">ecos.control</span>(<span class="dt">maxit =</span> 500L,<span class="dt">feastol =</span> <span class="fl">5e-6</span>,<span class="dt">reltol =</span> <span class="fl">5e-5</span>))
-
-## ------------------------------------------------------------------------
-temp &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/data.frame">data.frame</a></span>(<span class="dt">time =</span> <span class="dv">1</span><span class="op">:</span>Tsim,
+mpc2<span class="op">$</span><span class="kw">print_para</span>()</code></pre></div>
+<pre><code>## [1] "prediction horizon: 72 * 1200 s"
+## [1] "simulation horizon: 504 * 1200 s"
+## [1] "state-space continuous: discrete"</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mpc2<span class="op">$</span><span class="kw">set_mpc_constraint</span>()</code></pre></div>
+</div>
+<div id="solve-mpc-1" class="section level2">
+<h2 class="hasAnchor">
+<a href="#solve-mpc-1" class="anchor"></a>solve MPC</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">solu &lt;-<span class="st"> </span>mpc2<span class="op">$</span><span class="kw">solve_mpc</span>(<span class="dt">control =</span> <span class="kw">ecos.control</span>(<span class="dt">maxit =</span> 500L,<span class="dt">feastol =</span> <span class="fl">5e-6</span>,<span class="dt">reltol =</span> <span class="fl">5e-5</span>))</code></pre></div>
+</div>
+<div id="collect-results-and-plot-1" class="section level2">
+<h2 class="hasAnchor">
+<a href="#collect-results-and-plot-1" class="anchor"></a>collect results and plot</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">temp &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/data.frame">data.frame</a></span>(<span class="dt">time =</span> <span class="dv">1</span><span class="op">:</span>Tsim,
                    <span class="dt">room1 =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/t">t</a></span>(solu<span class="op">$</span>Y)[,<span class="dv">1</span>],
                    <span class="dt">room2 =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/t">t</a></span>(solu<span class="op">$</span>Y)[,<span class="dv">2</span>],
                    <span class="dt">room3 =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/t">t</a></span>(solu<span class="op">$</span>Y)[,<span class="dv">3</span>])
@@ -294,55 +325,34 @@ temp <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mel
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> time<span class="op">/</span>hfactor , <span class="dt">y =</span> value ,<span class="dt">color =</span> variable)) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">size =</span> <span class="dv">1</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw">theme_bw</span>()<span class="op">+</span>
-<span class="st">  </span><span class="kw">xlab</span>(<span class="st">"time/h"</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ylab</span>(<span class="st">"temperature/degC"</span>)
-
-ele <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">melt</span>(<span class="dt">id =</span> <span class="st">"time"</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">xlab</span>(<span class="st">"time/h"</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ylab</span>(<span class="st">"temperature/degC"</span>)</code></pre></div>
+<p><img src="Building-Climate-Control_files/figure-html/unnamed-chunk-10-1.png" width="700"></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ele <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">melt</span>(<span class="dt">id =</span> <span class="st">"time"</span>) <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> time<span class="op">/</span>hfactor , <span class="dt">y =</span> value ,<span class="dt">color =</span> variable)) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_line</span>(<span class="dt">size =</span> <span class="dv">1</span>) <span class="op">+</span>
 <span class="st">  </span><span class="kw">theme_bw</span>()<span class="op">+</span>
 <span class="st">  </span><span class="kw">xlab</span>(<span class="st">"time/h"</span>) <span class="op">+</span><span class="st"> </span><span class="kw">ylab</span>(<span class="st">"electricity/kw"</span>)</code></pre></div>
-<p><img src="reference/figures/fig3.png" width="80%" style="display: block; margin: auto;"></p>
-<p><img src="reference/figures/fig4.png" width="80%" style="display: block; margin: auto;"></p>
-<p>To be continued…</p>
-</div>
-<div id="support" class="section level2">
-<h2 class="hasAnchor">
-<a href="#support" class="anchor"></a>Support</h2>
-<p>Open an issue on the <a href="https://github.com/jywang2016/EMPC"><code>EMPC</code> Github</a> page.</p>
-</div>
-<div id="license" class="section level2">
-<h2 class="hasAnchor">
-<a href="#license" class="anchor"></a>License</h2>
-<p>The project is released under the terms of the GPL-3.0.</p>
-<p>Copyright © 2018 Jiangyu Wang</p>
-</div>
+<p><img src="Building-Climate-Control_files/figure-html/unnamed-chunk-10-2.png" width="700"></p>
 </div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <div class="links">
-<h2>Links</h2>
-<ul class="list-unstyled">
-<li>Browse source code at <br><a href="https://github.com/jywang2016/EMPC">https://​github.com/​jywang2016/​EMPC</a>
-</li>
-<li>Report a bug at <br><a href="https://github.com/jywang2016/EMPC/issues">https://​github.com/​jywang2016/​EMPC/​issues</a>
-</li>
-</ul>
+        <div id="tocnav">
+      <h2 class="hasAnchor">
+<a href="#tocnav" class="anchor"></a>Contents</h2>
+      <ul class="nav nav-pills nav-stacked">
+<li><a href="#load-packages">load packages</a></li>
+      <li><a href="#load-data">load data</a></li>
+      <li><a href="#build-mpc-object-and-set-value">build MPC object and set value</a></li>
+      <li><a href="#set-control-parameters">set control parameters</a></li>
+      <li><a href="#set-constraints-comfort-control">set constraints-comfort control</a></li>
+      <li><a href="#solve-mpc">solve MPC</a></li>
+      <li><a href="#collect-results-and-plot">collect results and plot</a></li>
+      <li><a href="#set-constraints-cost-control">set constraints-cost control</a></li>
+      <li><a href="#solve-mpc-1">solve MPC</a></li>
+      <li><a href="#collect-results-and-plot-1">collect results and plot</a></li>
+      </ul>
 </div>
-<div class="license">
-<h2>License</h2>
-<ul class="list-unstyled">
-<li><a href="https://www.r-project.org/Licenses/GPL-3">GPL-3</a></li>
-</ul>
-</div>
-<div class="developers">
-<h2>Developers</h2>
-<ul class="list-unstyled">
-<li>Jiangyu Wang <br><small class="roles"> Author, maintainer </small>  </li>
-<li><a href="authors.html">All authors...</a></li>
-</ul>
-</div>
-
       </div>
 
 </div>
