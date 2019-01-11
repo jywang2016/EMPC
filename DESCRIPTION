@@ -3,12 +3,13 @@ Type: Package
 Title: Model predictive control, demand response and energyhub modeling
 Version: 0.2.1
 Author: Jiangyu Wang, Yize Chen
+Authors@R: c(person("Jiangyu", "Wang", email = "jywang_2016@hust.edu.cn", role = c("aut","cre")),person("Yize", "Chen", role = c("ctb")))
 Maintainer: Jiangyu Wang <jywang_2016@hust.edu.cn>
 Description: You can use EMPC to carry out MPC(model predictive control), EMPC(economic model predictive control) for building. It can be applied to indoor temperature control, demand response and energyhub modeling.
-License: MIT
+License: GPL-3
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 6.1.0
+RoxygenNote: 6.1.1
 Imports: CVXR,expm,ECOSolveR,R6
 URL: https://github.com/jywang2016/EMPC
 BugReports: https://github.com/jywang2016/EMPC/issues

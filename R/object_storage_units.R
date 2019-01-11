@@ -3,18 +3,14 @@
 #' @description
 #' Build, set value of the Storage Unit(i.e. building )
 #'
-#' @usage
-#'
-#' model <- storage$new()
-#'
-#' model$setvalue(ssmodel,...,A_cst,B_cst,h_cst)
-#'
-#' model$ifcon() #if the state-space is continuous or not
-#'
-#' @format
-#' An object of R6Class
 #' @examples
-#' search `EMPC` on github, find more examples
+#'
+#' #model <- storage$new()
+#'
+#' #model$setvalue(ssmodel,...,A_cst,B_cst,h_cst)
+#'
+#' #model$ifcon() #if the state-space is continuous or not
+#'
 #' @import R6
 #' @import expm
 #' @export

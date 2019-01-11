@@ -3,18 +3,16 @@
 #' @description
 #' Build, set value of the Consumption Unit(i.e. building )
 #'
-#' @usage
+#' @examples
 #'
-#' model <- consumption$new()
+#' #model <- consumption$new()
 #'
-#' model$setvalue(ssmodel,...,x0,name = NA)
+#' #model$setvalue(ssmodel,...,x0,name = NA)
 #'
-#' model$ifcon() #if the state-space is continuous or not
+#' #model$ifcon() #if the state-space is continuous or not
 #'
 #' @format
 #' An object of R6Class
-#' @examples
-#' search `EMPC` on github, find more examples
 #' @import R6
 #' @import expm
 #' @export

@@ -5,13 +5,13 @@
 #' @note
 #' Two battery kinds, namely simple model and lead-acid battery model are support at present.
 #'
-#' @usage
-#' model <- ehubmpc$new()
-#' model$initialize()
-#' model$set_parameters(N,Tsim,obj,cost,ymin,ymax,yref,ECR,umax,umin)
-#' model$print_para()
-#' model$set_mpc_constraint()
-#' model$solve_mpc(unit.index = c(1,0),control = ecos.control())
+#' @examples
+#' #model <- ehubmpc$new()
+#' #model$initialize()
+#' #model$set_parameters(N,Tsim,obj,cost,ymin,ymax,yref,ECR,umax,umin)
+#' #model$print_para()
+#' #model$set_mpc_constraint()
+#' #model$solve_mpc(unit.index = c(1,0),control = ecos.control())
 #'
 #' @param
 #' N prediction horizon
@@ -41,8 +41,6 @@
 #' @format
 #' list of equipment power(U),temperature values(Y),battery charge/discharge power(Ub),
 #' net electricity power(E), battery capacity(Xb)
-#' @examples
-#' search `EMPC` on github, find more examples
 #' @import R6
 #' @import CVXR
 #' @import ECOSolveR
@@ -183,7 +181,7 @@ isolve_ehubmpc_leadacid <- function(self,private,control){
                                  b = prob_data[["b"]],
                                  control = control)
 
-    print(paste("Iteration",i,solver_output$infostring))
+    #print(paste("Iteration",i,solver_output$infostring))
     U[,i] <- solver_output$x[(nx*N + ny*N + 1):(nx*N + ny*N + nu)]
     Y[,i] <- solver_output$x[(nx*N + 1):(nx*N + ny)]
     Ub[,i] <- solver_output$x[((nx+ny+nu+ny+nxb)*N+1):((nx+ny+nu+ny+nxb)*N+nub)]
@@ -290,7 +288,7 @@ isolve_ehubmpc <- function(self,private,control){
                                A = prob_data[["A"]],
                                b = prob_data[["b"]],
                                control = control)
-  print(paste("Iteration",1,solver_output$infostring))
+  #print(paste("Iteration",1,solver_output$infostring))
 
   # cosumption component
   x0 <- self$building$parameters$x0
@@ -392,7 +390,7 @@ isolve_ehubmpc <- function(self,private,control){
                                  b = prob_data[["b"]],
                                  control = control)
 
-    print(paste("Iteration",i,solver_output$infostring))
+    #print(paste("Iteration",i,solver_output$infostring))
     U[,i] <- solver_output$x[(nx*N + ny*N + 1):(nx*N + ny*N + nu)]
     Y[,i] <- solver_output$x[(nx*N + 1):(nx*N + ny)]
     x0 <- solver_output$x[(nx+1):(nx*2)]
@@ -720,7 +718,7 @@ isolve_ehubmpc11 <- function(self,private,control){
                                  b = prob_data[["b"]],
                                  control = control)
 
-    print(paste("Iteration",i,solver_output$infostring))
+    #print(paste("Iteration",i,solver_output$infostring))
     U[,i] <- solver_output$x[(nx*N + ny*N + 1):(nx*N + ny*N + nu)]
     Y[,i] <- solver_output$x[(nx*N + 1):(nx*N + ny)]
     Ub[,i] <- solver_output$x[((nx+ny+nu+ny+nxb)*N+1):((nx+ny+nu+ny+nxb)*N+nub)]

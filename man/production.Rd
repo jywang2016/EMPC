@@ -4,16 +4,17 @@
 \name{production}
 \alias{production}
 \title{Production Unit}
-\format{An object of R6Class}
+\format{An object of class \code{R6ClassGenerator} of length 24.}
 \usage{
-model <- production$new()
-
-model$setvalue(generation,timestep)
+production
 }
 \description{
 Build, set value of the Production Unit(i.e. PV or WindTurbine)
 }
 \examples{
-search `EMPC` on github, find more examples
+#model <- production$new()
+
+#model$setvalue(generation,timestep)
+
 }
 \keyword{datasets}

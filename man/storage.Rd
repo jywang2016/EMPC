@@ -4,18 +4,20 @@
 \name{storage}
 \alias{storage}
 \title{Storage Unit}
-\format{An object of R6Class}
+\format{An object of class \code{R6ClassGenerator} of length 24.}
 \usage{
-model <- storage$new()
-
-model$setvalue(ssmodel,...,A_cst,B_cst,h_cst)
-
-model$ifcon() #if the state-space is continuous or not
+storage
 }
 \description{
 Build, set value of the Storage Unit(i.e. building )
 }
 \examples{
-search `EMPC` on github, find more examples
+
+#model <- storage$new()
+
+#model$setvalue(ssmodel,...,A_cst,B_cst,h_cst)
+
+#model$ifcon() #if the state-space is continuous or not
+
 }
 \keyword{datasets}

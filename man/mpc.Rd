@@ -4,14 +4,9 @@
 \name{mpc}
 \alias{mpc}
 \title{mpc controller}
-\format{list of equipment power(U) and temperature values(Y)}
+\format{An object of class \code{R6ClassGenerator} of length 24.}
 \usage{
-model <- mpc$new()
-model$initialize()
-model$set_parameters(N,Tsim,obj,cost,ymin,ymax,yref,ECR,umax,umin)
-model$print_para()
-model$set_mpc_constraint()
-model$solve_mpc(control = ecos.control())
+mpc
 }
 \arguments{
 \item{N}{prediction horizon}
@@ -46,6 +41,12 @@ Besides, time-variant constraints, such as temperature setpoints and range, elec
 equipment power (heating/cooling power) are supported.
 }
 \examples{
-search `EMPC` on github, find more examples
+#model <- mpc$new()
+#model$initialize()
+#model$set_parameters(N,Tsim,obj,cost,ymin,ymax,yref,ECR,umax,umin)
+#model$print_para()
+#model$set_mpc_constraint()
+#model$solve_mpc(control = ecos.control())
+
 }
 \keyword{datasets}

@@ -6,16 +6,18 @@
 \title{Consumption Unit}
 \format{An object of R6Class}
 \usage{
-model <- consumption$new()
-
-model$setvalue(ssmodel,...,x0,name = NA)
-
-model$ifcon() #if the state-space is continuous or not
+consumption
 }
 \description{
 Build, set value of the Consumption Unit(i.e. building )
 }
 \examples{
-search `EMPC` on github, find more examples
+
+#model <- consumption$new()
+
+#model$setvalue(ssmodel,...,x0,name = NA)
+
+#model$ifcon() #if the state-space is continuous or not
+
 }
 \keyword{datasets}

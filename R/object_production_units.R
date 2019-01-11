@@ -2,15 +2,11 @@
 #'
 #' @description
 #' Build, set value of the Production Unit(i.e. PV or WindTurbine)
-#' @usage
-#' model <- production$new()
-#'
-#' model$setvalue(generation,timestep)
-#'
-#' @format
-#' An object of R6Class
 #' @examples
-#' search `EMPC` on github, find more examples
+#' #model <- production$new()
+#'
+#' #model$setvalue(generation,timestep)
+#'
 #' @import R6
 #' @export
 

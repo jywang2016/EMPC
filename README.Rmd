@@ -3,13 +3,6 @@ output:
   github_document
 ---
 
-```{r, echo = FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>",
-  fig.path = "man/figures/README-"
-)
-```
 # EMPC <img src="man/figures/EMPClogo.png" align="right" />
 
 An R module aimed at **MPC** (model predictive control), **EMPC** (economics model predictive control), EMPC-based Demand Response and Energyhub modeling for buildings.
@@ -28,7 +21,9 @@ An R module aimed at **MPC** (model predictive control), **EMPC** (economics mod
 
 ## Framework for Building Simulation in R
 
-<img src="man/figures/framework2.png" align="center" />
+```{r,echo=FALSE}
+knitr::include_graphics(path =  "man/figures/framework2.png")
+```
 
 
 ## How MPC in R
@@ -37,17 +32,22 @@ In my opinion, building MPC is a specific convex optimization problem which can 
 ## Algorithm
 MPC: For every iteration in **comfort** control (i.e. indoor temperature control), the optimization problem is concluded as:
 
-<img src="man/figures/equation1.png" align="center" />
-
+```{r,echo=FALSE}
+knitr::include_graphics(path =  "man/figures/equation1.png")
+```
 
 EMPC:For every iteration in **cost** control (i.e. minimize the electricity cost), the optimization problem is concluded as:
 
-<img src="man/figures/equation2.png" align="center" />
+```{r,echo=FALSE}
+knitr::include_graphics(path =  "man/figures/equation2.png")
+```
 
 
 EMPC: If there is a storage or generation component(i.e. simple battery), the optimization problem is concluded as:
 
-<img src="man/figures/equation3.png" align="center" />
+```{r,echo=FALSE}
+knitr::include_graphics(path =  "man/figures/equation3.png")
+```
 
 
 ## Note
@@ -75,16 +75,15 @@ devtools::install_github("jywang2016/EMPC")
 ## Documentation
 
 Three examples are given in the `test` file.
-Here is the example#1:comfort/cost control with time-invariant constrains
-```{r echo=TRUE, message=FALSE, warning=FALSE}
+Here is the example#1:comfort/cost control with time-variant constrains.
+
+```{r message=FALSE, warning=FALSE,eval=FALSE}
 #rm(list = ls())
 library(EMPC)
 library(dplyr)
-library(CVXR)
-library(ECOSolveR)
 
 ## ----echo=TRUE, message=FALSE, warning=FALSE-----------------------------
-load("./test/ssM.Rdata")
+load("./inst/extdata/ssM.Rdata")
 # state-space model of building
 ssmodel <- list(A = ssM$A %>% as.matrix(),
                 Bu = ssM$Bu %>% as.matrix(),
@@ -176,8 +175,18 @@ ele %>% melt(id = "time") %>%
   geom_line(size = 1) +
   theme_bw()+
   xlab("time/h") + ylab("electricity/kw")
+```
+
+```{r,echo=FALSE,fig.align='center',out.width='80%'}
+knitr::include_graphics(path =  "man/figures/fig1.png")
+```
+
+```{r,echo=FALSE,fig.align='center',out.width='80%'}
+knitr::include_graphics(path =  "man/figures/fig2.png")
+```
 
 
+```{r message=FALSE, warning=FALSE,eval=FALSE}
 ## ------------------------------------------------------------------------
 mpc2$set_parameters(N = N,
                     Tsim = Tsim,
@@ -221,6 +230,14 @@ ele %>% melt(id = "time") %>%
   geom_line(size = 1) +
   theme_bw()+
   xlab("time/h") + ylab("electricity/kw")
+```
+
+```{r,echo=FALSE,fig.align='center',out.width='80%'}
+knitr::include_graphics(path =  "man/figures/fig3.png")
+```
+
+```{r,echo=FALSE,fig.align='center',out.width='80%'}
+knitr::include_graphics(path =  "man/figures/fig4.png")
 ```
 
 To be continued...

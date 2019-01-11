@@ -7,13 +7,13 @@
 #' Besides, time-variant constraints, such as temperature setpoints and range, electricity cost,
 #' equipment power (heating/cooling power) are supported.
 #'
-#' @usage
-#' model <- mpc$new()
-#' model$initialize()
-#' model$set_parameters(N,Tsim,obj,cost,ymin,ymax,yref,ECR,umax,umin)
-#' model$print_para()
-#' model$set_mpc_constraint()
-#' model$solve_mpc(control = ecos.control())
+#' @examples
+#' #model <- mpc$new()
+#' #model$initialize()
+#' #model$set_parameters(N,Tsim,obj,cost,ymin,ymax,yref,ECR,umax,umin)
+#' #model$print_para()
+#' #model$set_mpc_constraint()
+#' #model$solve_mpc(control = ecos.control())
 #'
 #' @param
 #' N prediction horizon
@@ -37,10 +37,6 @@
 #' @param
 #' control ecos.control; control parameters for ECOS solver. More details can be seen in ECOSolver
 #' package
-#' @format
-#' list of equipment power(U) and temperature values(Y)
-#' @examples
-#' search `EMPC` on github, find more examples
 #' @import R6
 #' @import CVXR
 #' @import ECOSolveR
@@ -104,7 +100,7 @@ isolve_mpc_comf <- function(self,private,control){
                                dims = prob_data[["dims"]],
                                A = prob_data[["A"]],
                                b = prob_data[["b"]])
-  print(paste("Iteration",1,solver_output$infostring))
+  #print(paste("Iteration",1,solver_output$infostring))
   ssM <- self$building$parameters$ssM
   N <- self$parameters$N
   Dist <- t(self$building$parameters$disturbance)
@@ -174,7 +170,7 @@ isolve_mpc_comf <- function(self,private,control){
                                  b = prob_data[["b"]],
                                  control = control)
 
-    print(paste("Iteration",i,solver_output$infostring))
+    #print(paste("Iteration",i,solver_output$infostring))
     U[,i] <- solver_output$x[(nx*N + ny*N + 1):(nx*N + ny*N + nu)]
     Y[,i] <- solver_output$x[(nx*N + 1):(nx*N + ny)]
     x0 <- solver_output$x[(nx+1):(nx*2)]
@@ -190,7 +186,7 @@ isolve_mpc_cost <- function(self,private,control){
                                dims = prob_data[["dims"]],
                                A = prob_data[["A"]],
                                b = prob_data[["b"]])
-  print(paste("Iteration",1,solver_output$infostring))
+  #print(paste("Iteration",1,solver_output$infostring))
   ssM <- self$building$parameters$ssM
   N <- self$parameters$N
   Dist <- t(self$building$parameters$disturbance)
@@ -255,7 +251,7 @@ isolve_mpc_cost <- function(self,private,control){
                                  b = prob_data[["b"]],
                                  control = control)
 
-    print(paste("Iteration",i,solver_output$infostring))
+    #print(paste("Iteration",i,solver_output$infostring))
     U[,i] <- solver_output$x[(nx*N + ny*N + 1):(nx*N + ny*N + nu)]
     Y[,i] <- solver_output$x[(nx*N + 1):(nx*N + ny)]
     x0 <- solver_output$x[(nx+1):(nx*2)]

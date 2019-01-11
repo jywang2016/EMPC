@@ -7,12 +7,7 @@
 \format{list of equipment power(U),temperature values(Y),battery charge/discharge power(Ub),
 net electricity power(E), battery capacity(Xb)}
 \usage{
-model <- ehubmpc$new()
-model$initialize()
-model$set_parameters(N,Tsim,obj,cost,ymin,ymax,yref,ECR,umax,umin)
-model$print_para()
-model$set_mpc_constraint()
-model$solve_mpc(unit.index = c(1,0),control = ecos.control())
+ehubmpc
 }
 \arguments{
 \item{N}{prediction horizon}
@@ -48,6 +43,12 @@ or/and production(i.e. PV, wind turbine) units
 Two battery kinds, namely simple model and lead-acid battery model are support at present.
 }
 \examples{
-search `EMPC` on github, find more examples
+#model <- ehubmpc$new()
+#model$initialize()
+#model$set_parameters(N,Tsim,obj,cost,ymin,ymax,yref,ECR,umax,umin)
+#model$print_para()
+#model$set_mpc_constraint()
+#model$solve_mpc(unit.index = c(1,0),control = ecos.control())
+
 }
 \keyword{datasets}
